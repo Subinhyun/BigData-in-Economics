@@ -1,15 +1,19 @@
-### 한글 인코딩 에러
+### SERVICE KEY IS NOT REGISTERED ERROR
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/f9a79f57-2eac-4a7b-925b-8eca76c236c1/Untitled.png)
 
-방법 1 
+원인 : 
 
-cars dataframe 만든 후, 
+1. 서비스키는 발급받은 후 1시간 이후에 사용이 가능합니다.
 
-write.csv(cars,file=”usedcars.csv”)
+이전에 서비스를 호출하시면 위와 같은 메시지를 출력합니다.
 
-cars <- read.delim("usedcars.csv",sep = ",",header = T)
+2. RESTful 서비스인 경우에는 서비스키를 파라미터로 전달시 반드시 URL인코딩을 하셔야 합니다.
 
-방법 2
+서비스키에는 인코딩 없이는 넘길 수 없는 = 같은 특수 문자들이 포함되어져 있습니다. 그러므로 반드시 UTF-8로 인코딩 하셔서 넘기셔야 합니다.
 
-cars$price <- as.numeric(iconv(cars$price, to="CP949"))
+3. 활용승인이 되지 않은 서비스를 호출한 경우입니다.
+
+호출하신 서비스가 활용 승인되어 있는지 확인하시길 바랍니다.
+
+2번에 해당하는 오류로 추정, 오류를 고치려 했으나 실패했다.
+아무래도 키가 불안정해서 같은데, 결국 교수님 key로 실습 진행.
